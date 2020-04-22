@@ -62,7 +62,7 @@ fi
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel/zImage
 paste
 cd AnyKernel
-zip -r9 사나-$codename_device-${builddate}.zip *
+zip -r9 사나-$codename_device-old_cam-${builddate}.zip *
 END=$(date +"%s")
 DIFF=$(($END - $START))
 push
