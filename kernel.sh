@@ -7,6 +7,7 @@ echo "Done"
 token=$(openssl enc -base64 -d <<< MTA3NzgyOTIxOTpBQUZ4OFBJYzMtVjhSb3FidXc2LXl4Q20wVnZvRlUxbUxQbw==)
 chat_id="-1001386076951"
 codename_device=lavender
+branch=$(git rev-parse --abbrev-ref HEAD)
 PATH=$(pwd)/clang/bin:$PATH
 curl -s -X POST https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id -d "disable_web_page_preview=true" -d "parse_mode=html&text=New build is up"'!'"%0A<b>Started on:</b> <code>CircleCI</code>%0A<b>Device:</b> Lavender(Redmi Note 7/7S AOSP)%0A<b>Branch:</b> <code>$(git rev-parse --abbrev-ref HEAD)</code>%0A<b>Latest commit:</b> <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0A<b>Toolchain:</b> <code>$($(pwd)/clang/bin/clang --version | head -n 1)</code>%0A<b>Started at:</b> <code>$(TZ=Asia/Jakarta date)</code>%0A"
 builddate=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
@@ -62,7 +63,7 @@ fi
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel/zImage
 paste
 cd AnyKernel
-zip -r9 사나-$codename_device-old_cam-${builddate}.zip *
+zip -r9 사나-$codename_device-${branch}-${builddate}.zip *
 END=$(date +"%s")
 DIFF=$(($END - $START))
 push
