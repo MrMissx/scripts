@@ -1,7 +1,7 @@
 #!bin/bash
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 echo "Cloning Toolchain, and AnyKernel"
-git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master clang
+git clone --depth=1 https://github.com/Haseo97/Avalon-Clang-11.0.1 -b 11.0.1 clang
 git clone --depth=1 https://github.com/keselekpermen69/AnyKernel3 -b master AnyKernel
 echo "Done"
 token=$(openssl enc -base64 -d <<< MTA3NzgyOTIxOTpBQUZ4OFBJYzMtVjhSb3FidXc2LXl4Q20wVnZvRlUxbUxQbw==)
