@@ -3,7 +3,7 @@ IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 echo "Clone Toolchain, Anykernel and GCC"
 git clone -j32 https://github.com/keselekpermen69/AnyKernel3 -b master AnyKernel
 git clone -j32 --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 toolchain
-git clone -j32 --depth=1 https://github.com/HANA-CI-Build-Project/proton-clang -b proton-clang-11 clang
+git clone -j32 --depth=1 https://github.com/kdrag0n/proton-clang -b master clang
 echo "Done"
 token=$(openssl enc -base64 -d <<< MTA3NzgyOTIxOTpBQUZ4OFBJYzMtVjhSb3FidXc2LXl4Q20wVnZvRlUxbUxQbw==)
 chat_id="-1001386076951"
@@ -71,7 +71,7 @@ make -j$(nproc --all) O=out \
                       CROSS_COMPILE_ARM32=arm-linux-gnueabi- | tee build.log
             if ! [ -a $IMAGE ]; then
                 finerr
-                stikerr
+		stikerr
                 exit 1
             fi
         cp out/arch/arm64/boot/Image.gz-dtb AnyKernel/zImage
