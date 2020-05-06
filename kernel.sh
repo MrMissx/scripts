@@ -79,7 +79,7 @@ make -j$(nproc --all) O=out \
 # Zipping
 function zipping() {
         cd AnyKernel
-        zip -r9 Sana-Kernel-Lavender-$(branch)-${builddate}.zip *
+        zip -r9 Sana-Lavender-$(branch)-${builddate}.zip *
         cd ..
 }
 sendinfo
