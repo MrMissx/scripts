@@ -22,7 +22,7 @@ function sticker() {
 }
 # Sticker Error
 function stikerr() {
-	curl -s -F chat_id=$chat_id -F sticker="CAACAgUAAx0CUGAGVgACHsVemA5HUaHeZOltjdQfzEDAoAf3hwACOwIAAiP4CjQ0b" https://api.telegram.org/bot$token/sendSticker
+	curl -s -F chat_id=$chat_id -F sticker="CAACAgUAAx0CUGAGVgACH2RetQdhikSG4I964z77S74lTtMBSAACOwIAAiP4CjQ0b-ii4MiaRxkE" https://api.telegram.org/bot$token/sendSticker
 }
 # Send info to channel
 function sendinfo() {
