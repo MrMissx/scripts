@@ -5,7 +5,7 @@ git clone -j32 https://github.com/keselekpermen69/AnyKernel3 -b master AnyKernel
 git clone -j32 --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 toolchain
 git clone -j32 --depth=1 https://github.com/kdrag0n/proton-clang -b master clang
 echo "Done"
-token=$(openssl enc -base64 -d <<< MTA3NzgyOTIxOTpBQUZ4OFBJYzMtVjhSb3FidXc2LXl4Q20wVnZvRlUxbUxQbw==)
+token=$(openssl enc -base64 -d <<< MTA4NzUzNzAzNzpBQUdfeWNCSE5pSnpYM2VlYmN3YlB5Y0xRZ2dudTM4dG5CMA==)
 chat_id="-1001386076951"
 branch=$(git rev-parse --abbrev-ref HEAD)
 GCC="$(pwd)/gcc/bin/aarch64-linux-gnu-"

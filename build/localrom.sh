@@ -51,7 +51,7 @@ export ARCH=arm64
 export SUBARCH=arm64
 export USE_CCACHE=1
 export TELEGRAM_ID="-1001386076951"
-export TELEGRAM_TOKEN=$(openssl enc -base64 -d <<< MTA3NzgyOTIxOTpBQUZ4OFBJYzMtVjhSb3FidXc2LXl4Q20wVnZvRlUxbUxQbw==)
+export TELEGRAM_TOKEN=$(openssl enc -base64 -d <<< MTA4NzUzNzAzNzpBQUdfeWNCSE5pSnpYM2VlYmN3YlB5Y0xRZ2dudTM4dG5CMA==)
 export CCACHE_COMPRESS=1
 export WITHOUT_CHECK_API=true
 export CCACHE_EXEC=/usr/bin/ccache

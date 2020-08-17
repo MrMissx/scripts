@@ -61,7 +61,7 @@ PTTG=1
 	then
 		# Set Telegram Chat ID
 		CHATID="-1001386076951"
-    token=$(openssl enc -base64 -d <<< MTA3NzgyOTIxOTpBQUZ4OFBJYzMtVjhSb3FidXc2LXl4Q20wVnZvRlUxbUxQbw==)
+    token=$(openssl enc -base64 -d <<< MTA4NzUzNzAzNzpBQUdfeWNCSE5pSnpYM2VlYmN3YlB5Y0xRZ2dudTM4dG5CMA==)
 	fi
 
 # Generate a full DEFCONFIG prior building. 1 is YES | 0 is NO(default)
