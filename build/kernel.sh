@@ -12,7 +12,7 @@ GCC="$(pwd)/gcc/bin/aarch64-linux-gnu-"
 builddate=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
 START=$(date +"%s")
 export LD_LIBRARY_PATH="/root/clang/bin/../lib:$PATH"xport ARCH=arm64
-export KBUILD_BUILD_USER=KeselekPermen69
+export KBUILD_BUILD_USER=MrMiss
 export KBUILD_BUILD_HOST=CircleCI
 # sticker
 function sticker() {
