@@ -14,7 +14,7 @@ do
     echo -ne "enter source repo link: "
     read sourcerepo
     
-    echo -ne "enter source repo link: "
+    echo -ne "enter your repo link: "
     read cloner
 
     echo -e "cloning ${sourcerepo}"
