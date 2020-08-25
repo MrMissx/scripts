@@ -5,20 +5,19 @@
 # https://android.googlesource.com/platform/frameworks/base/+/master/cmds/bootanimation/FORMAT.md#trim_txt
 
 import time
+import sys
 
 
 def resomid(reso):
   try:
     a, b = reso.split("x", 1)
-  except ValueError:
-    print("\nmake sure you input the resolution corectly (don't forget the 'x')")
-    print("Exiting...")
-    exit()
-
-  print(f"\nWidth={a} , Height={b}\n")
-  w = int(a) / 2
-  h = int(b) / 2
-  return w, h
+    print(f"\nWidth={a} , Height={b}\n")
+    w = int(a) / 2
+    h = int(b) / 2
+    return w, h
+  except ValueError as e:
+    print(f"\nuhmmm... we got an error {e}")
+    sys.exit()
 
 
 def pictmid(width, height):
@@ -35,6 +34,10 @@ def compile(w, h ,midx ,midy):
 
 # Resolution of the bootanimation WidthxHeight
 reso = input("Enter the bootanimation resolution(eg: 1080x2280 ): ")
+while "x" not in reso:
+  print ("\nmake sure you input the resolution corectly (don't forget the \"x\")")
+  reso = input("Enter here: ")
+
 get_mid1, get_mid2 = resomid(reso)
 time.sleep(0.5)
 
