@@ -5,6 +5,7 @@ love to make my life easier 😜
 ### list
 
  - `bootanim_trim.py`: generate android bootanimation trim.txt value.
+ - `bootanim_trim.cpp`: same as above but in c++.
  - `pdf2image.sh`: convert every page on pdf to image file.
  - `rename.sh`: Rename batch of files in a folder.
  - `repoclone.sh`: git repo cloner.
