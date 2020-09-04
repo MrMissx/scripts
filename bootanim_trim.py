@@ -1,4 +1,4 @@
-# /usr/bin/env python3
+#!/usr/bin/env python3
 # get the android bootanimation trim.txt value
 # output will like WxH+X+Y
 #
