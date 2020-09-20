@@ -4,9 +4,38 @@
 # Copyright (C) 2019, 2020, Dicky Herlambang (@Nicklas373)
 # Copyright (C) 2019, 2020, Dhimas Bagus Prayoga (@kry9ton)
 # Copyright (C) 2020, Muhammad Fadlyas (@fadlyas07)
+# Copyright (c) 2020, Mr.Miss (@KeselekPermen69)
 
 clear
 
+echo -e ""
+echo -e "Let's setup your build enviroment"
+echo -e ""
+echo -e "[1] setup android build enviroment + docker"
+echo -e "[2] skip"
+echo -e "[3] cancel"
+echo -ne "\nEnter a choice[1-3]: "
+read setup
+    if [ $setup = "1" ]; then
+        echo -e "pulling docker"
+        docker pull mrmiss/doker:latest
+        sleep 3
+        clear
+        echo -e "setting up android build env"
+        git clone https://github.com/akhilnarang/scripts buildenv
+        cd buildenv
+        bash setup/android_build_env.sh
+        cd ..
+        rm -rf buildenv
+    fi
+    if [ $setup = "2" ]; then
+        echo -e "Skipping build setup"
+    fi
+    if [ $choice = "3" ]; then
+        exit 1
+    fi
+
+clear
 # Clone AnyKernel If not exist
 if ! [[ -e $(pwd)/anykernel-3 ]]; then
     echo -e ""
@@ -20,13 +49,13 @@ if ! [[ -e $(pwd)/anykernel-3 ]]; then
     if [ $choice = "1" ]; then
         echo -e "cloning anykernel-3..."
         anykernel_link=https://github.com/keselekpermen69/AnyKernel3
-        git clone --quiet --depth=1 "$anykernel_link" anykernel-3
+        git clone --depth=1 "$anykernel_link" anykernel-3
     fi
     if [ $choice = "2" ]; then
         echo -e "cloning anykernel-3..."
         echo -e "Enter the Link of your custom anykernel here"
         read -p "AnyAkernel URL's: " anykernel_link
-        git clone --quiet --depth=1 "$anykernel_link" anykernel-3
+        git clone --depth=1 "$anykernel_link" anykernel-3
     fi
     if [ $choice = "3" ]; then
         exit 1
@@ -40,21 +69,16 @@ if ! [[ -e $(pwd)/tc-clang ]]; then
     echo -e ""
     echo -e "Why clang? clang is Future plox :v"
     echo -e ""
-    echo -e "\n[1] GF🔥clang 11.0.0"
-    echo -e "[2] Proton Clang 11.0.0"
-    echo -e "[3] Custom clang"
-    echo -e "[4] Exit"
-    echo -ne "\nEnter a choice[1-4]: "
+    echo -e "\n[1] Proton Clang 11.0.0"
+    echo -e "[2] Custom clang"
+    echo -e "[3] Exit"
+    echo -ne "\nEnter a choice[1-3]: "
     read choice
     if [ $choice = "1" ]; then
-        echo -e "Cloning GF🔥clang 11.0.0..."
-        git clone --quiet --depth=1 https://github.com/fadlyas07/clang-11.0.0 tc-clang
+        echo -e "Cloning Proton clang 11.0.0..."
+        git clone --depth=1 https://github.com/kdrag0n/proton-clang tc-clang
     fi
     if [ $choice = "2" ]; then
-        echo -e "Cloning Proton clang 11.0.0..."
-        git clone --quiet --depth=1 https://github.com/kdrag0n/proton-clang tc-clang
-    fi
-    if [ $choice = "3" ]; then
         echo -e ""
         echo -e "⚠️ Make sure Clang is based on LLVM and built with binutils in it, or compilation will fail."
         echo -e ""
@@ -62,9 +86,9 @@ if ! [[ -e $(pwd)/tc-clang ]]; then
         read -p "Enter Clang URL's: " URL
         echo -e ""
         echo -e "Cloning $URL"
-        git clone --quiet --depth=1 "$URL" tc-clang
+        git clone --depth=1 "$URL" tc-clang
     fi
-    if [ $choice = "4" ]; then
+    if [ $choice = "3" ]; then
         exit 1
     fi
 fi
@@ -124,6 +148,7 @@ if [ $choice = "1" ]; then
     echo -ne "                            BUILD STARTED!                          "
     echo -e ""
     echo -e "##-------------------------------##-------------------------------##"
+    START_TIME=$(date +"%s")
     export LD_LIBRARY_PATH=$(pwd)/tc-clang/bin/../lib:$PATH
     make ARCH=arm64 O=out "$DEFCONFIG" && \
     PATH=$(pwd)/tc-clang/bin:$PATH \
@@ -148,12 +173,17 @@ if [ $choice = "1" ]; then
         echo -e "Open trimmed_log.txt to see that error"
       exit 1
     fi
-    rm -rf Log*.log
+    FINISH_TIME=$(date +"%s")
+    DIFF=$(($FINISH_TIME - $START_TIME))
     echo -e "##-------------------------------##-------------------------------##"
     echo -e ""
     echo -ne "                            BUILD SUCCESS!                          "
     echo -e ""
     echo -e "##-------------------------------##-------------------------------##"
+    echo -e "removing build log"
+    rm -rf Log*.log
+    echo -e "done"
+    echo -e "Build took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s)."
 fi
 
 # Choice 2
