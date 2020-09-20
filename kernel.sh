@@ -1,17 +1,16 @@
-#!bin/bash
+#!/usr/bin/env bash
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 echo "Clone Toolchain, Anykernel and GCC"
 git clone -j32 https://github.com/keselekpermen69/AnyKernel3 -b master AnyKernel
-git clone -j32 --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 toolchain
 git clone -j32 --depth=1 https://github.com/kdrag0n/proton-clang -b master clang
 echo "Done"
-token=$(openssl enc -base64 -d <<< MTA4NzUzNzAzNzpBQUdfeWNCSE5pSnpYM2VlYmN3YlB5Y0xRZ2dudTM4dG5CMA==)
-chat_id="-1001386076951"
 branch=$(git rev-parse --abbrev-ref HEAD)
 GCC="$(pwd)/gcc/bin/aarch64-linux-gnu-"
 builddate=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
 START=$(date +"%s")
-export LD_LIBRARY_PATH="/root/clang/bin/../lib:$PATH"xport ARCH=arm64
+export LD_LIBRARY_PATH=$(pwd)/clang/bin/../lib:$PATH
+export ARCH=arm64
+export SUBARCH=arm64
 export KBUILD_BUILD_USER=MrMiss
 export KBUILD_BUILD_HOST=CircleCI
 # sticker
@@ -62,16 +61,20 @@ function finerr() {
 # Compile plox
 function compile() {
 make O=out ARCH=arm64 lavender-perf_defconfig
-PATH="${PWD}/bin:${PWD}/toolchain/bin:${PATH}:${PWD}/clang/bin:${PATH}" \
+PATH=$(pwd)/clang/bin:$PATH \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
+                      AR=llvm-ar \
                       CC=clang \
-                      CLANG_TRIPLE=aarch64-linux-gnu- \
                       CROSS_COMPILE=aarch64-linux-gnu- \
-                      CROSS_COMPILE_ARM32=arm-linux-gnueabi- | tee build.log
+                      CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+                      NM=llvm-nm \
+                      OBJCOPY=llvm-objcopy \
+                      OBJDUMP=llvm-objdump 
+                      STRIP=llvm-strip 2>&1| tee build.log
             if ! [ -a $IMAGE ]; then
                 finerr
-		stikerr
+		        stikerr
                 exit 1
             fi
         cp out/arch/arm64/boot/Image.gz-dtb AnyKernel/zImage
@@ -79,7 +82,7 @@ make -j$(nproc --all) O=out \
 # Zipping
 function zipping() {
         cd AnyKernel
-        zip -r9 Ini_Kernel-${branch}-${builddate}.zip *
+        zip -r9 Ini_Kernel-${builddate}.zip *
         cd ..
 }
 sendinfo
