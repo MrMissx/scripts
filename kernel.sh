@@ -8,6 +8,7 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 GCC="$(pwd)/gcc/bin/aarch64-linux-gnu-"
 builddate=$(TZ=Asia/Jakarta date +'%H%M-%d%m%y')
 START=$(date +"%s")
+Kernel_ver=$(make kernelversion)
 export LD_LIBRARY_PATH=$(pwd)/clang/bin/../lib:$PATH
 export ARCH=arm64
 export SUBARCH=arm64
@@ -82,7 +83,7 @@ make -j$(nproc --all) O=out \
 # Zipping
 function zipping() {
         cd AnyKernel
-        zip -r9 Ini_Kernel-${builddate}.zip *
+        zip -r9 Ini_Kernel-${Kernel_ver}_${builddate}.zip *
         cd ..
 }
 sendinfo
