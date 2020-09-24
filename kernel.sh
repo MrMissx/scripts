@@ -75,7 +75,7 @@ make -j$(nproc --all) O=out \
                       STRIP=llvm-strip 2>&1| tee build.log
             if ! [ -a $IMAGE ]; then
                 finerr
-		        stikerr
+                stikerr
                 exit 1
             fi
         cp out/arch/arm64/boot/Image.gz-dtb AnyKernel/zImage
