@@ -17,7 +17,7 @@ export KBUILD_BUILD_HOST=CircleCI
 # sticker
 function sticker() {
         curl -s -X POST "https://api.telegram.org/bot$token/sendSticker" \
-                        -d sticker="CAACAgUAAx0CUGAGVgACHrVels7L-VFrDDRSkhF91C-xjNr_9gACGgIAAiP4CjQujWf62uWo8xgE" \
+                        -d sticker="CAACAgUAAxkBAAFDZGpfbHO-4p9sLCV3tSnzPP8TGc2ElwACiQIAAiP4CjQQGiR09Uh7UBsE" \
                         -d chat_id=$chat_id
 }
 # Sticker Error
