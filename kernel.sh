@@ -65,14 +65,10 @@ make O=out ARCH=arm64 lavender-perf_defconfig
 PATH=$(pwd)/clang/bin:$PATH \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
-                      AR=llvm-ar \
                       CC=clang \
+                      CLANG_TRIPLE=aarch64-linux-gnu- \
                       CROSS_COMPILE=aarch64-linux-gnu- \
-                      CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-                      NM=llvm-nm \
-                      OBJCOPY=llvm-objcopy \
-                      OBJDUMP=llvm-objdump 
-                      STRIP=llvm-strip 2>&1| tee build.log
+                      CROSS_COMPILE_ARM32=arm-linux-gnueabi- | tee build.log
             if ! [ -a $IMAGE ]; then
                 finerr
                 stikerr
