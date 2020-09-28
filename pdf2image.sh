@@ -9,7 +9,7 @@ then
 	echo ""
 	# promt to install
 	echo "do you want to install(y/n):"
-	read ans
+	read -r ans
 	if [[ "$ans" == "y" ]]; then
 		if [ "$(command -v apt-get)" != "" ]; then # debian
 			apt-get install poppler-utils
@@ -28,7 +28,7 @@ fi
 
 filetoconv() {
 	echo -ne "Enter the pdf file name: "
-	read PDF
+	read -r PDF
 	echo -e ""
 	# exit if no file detected
 	if ! [[ -e $(pwd)/${PDF} ]]; then
@@ -40,10 +40,10 @@ filetoconv() {
 
 outname() {
 	echo -ne "Enter the output name: "
-	read NAME
+	read -r NAME
 	echo -e ""
 	echo -ne "Enter the output file (png or jpeg): "
-	read EXT
+	read -r EXT
 	echo -e ""
 }
 
@@ -51,7 +51,7 @@ paging() {
 	echo -e "Select the file page to convert"
 	echo -e "(leave it blank to convert all pages)"
 	echo -ne "Enter here: " 
-	read HAL
+	read -r HAL
 	echo -e ""
 	if [ -z "$HAL" ]; then
 		PAGE=""
@@ -63,6 +63,6 @@ paging() {
 filetoconv
 paging
 outname
-pdftoppm ${PDF} ${NAME} -${EXT} ${PAGE}
+pdftoppm "${PDF} ${NAME} -${EXT} ${PAGE}"
 echo -e "Done..."
 exit

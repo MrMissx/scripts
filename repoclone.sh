@@ -12,14 +12,14 @@ while :
 do
   clear
     echo -ne "enter source repo link: "
-    read sourcerepo
+    read -r sourcerepo
     
     echo -ne "enter your repo link: "
-    read cloner
+    read -r cloner
 
     echo -e "cloning ${sourcerepo}"
     git clone "$sourcerepo" repoclone
-    cd repoclone
+    cd repoclone || exit 1
     sleep 0.5
 
     echo -e ""
