@@ -5,6 +5,7 @@ love to make my life easier 😜
 ### list
 
  - `task`: my school task
+ - `snippet`: Presonal VSCode auto complete snippet
  - `bootanim_trim.py`: generate android bootanimation trim.txt value.
  - `bootanim_trim.cpp`: same as above but in c++.
  - `pdf2image.sh`: convert every page on pdf to image file.

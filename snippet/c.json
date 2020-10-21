@@ -1,0 +1,61 @@
+{
+	"generate main func": {
+		"prefix": "create",
+		"body": [
+			"#include <stdio.h>",
+			"",
+			"int main(){",
+			"    $0",
+			"    return 0;",
+			"}",
+			""
+		],
+		"description": "generate main func"
+	},
+	"For loop": {
+		"prefix": "loop",
+		"body": [
+			"for (${1:int} ${2:i}=${3:0}; ${2} < ${4:n}; ${2}++){",
+			"    $0",
+			"}"
+		],
+		"description": "For loop"
+	},
+	"printf": {
+		"prefix": "print",
+		"body": [
+			"printf(\"${1}\", ${2});"
+		],
+		"description": "printf"
+	},
+	"scanf1": {
+		"prefix": "scan1",
+		"body": [
+			"scanf(\"%${1:d}\", &${2});"
+		],
+		"description": "scanf1"
+	},
+	"scanf2": {
+		"prefix": "scan2",
+		"body": [
+			"scanf(\"%${1:d} %${2:d}\", &${3}, &${4});"
+		],
+		"description": "scanf2"
+	},
+	"scanf3": {
+		"prefix": "scan3",
+		"body": [
+			"scanf(\"%${1:d} %${2:d} %${3:d}\", &${4}, &${5}, &${6});"
+		],
+		"description": "scanf3"
+	},
+	"Function": {
+		"prefix": "newfunc",
+		"body": [
+			"${1|int,double,float,long long int,void|} ${2:FuncName}(${3}){",
+			"    ${4}",
+			"}"
+		],
+		"description": "Function"
+	}
+}
