@@ -8,6 +8,7 @@ love to make my life easier 😜
  - `snippet`: Presonal VSCode auto complete snippet
  - `bootanim_trim.py`: generate android bootanimation trim.txt value.
  - `bootanim_trim.cpp`: same as above but in c++.
+ - `kernel.sh`: Kernel build script.
  - `pdf2image.sh`: convert every page on pdf to image file.
  - `rename.sh`: Rename batch of files in a folder.
  - `repoclone.sh`: git repo cloner.
