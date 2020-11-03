@@ -1,0 +1,4 @@
+[submodule "BimayClass"]
+	path = BimayClass
+	url = https://github.com/keselekpermen69/BimayClass
+	branch = master
