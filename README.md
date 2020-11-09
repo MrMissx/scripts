@@ -8,8 +8,6 @@ love to make my life easier 😜
 
 - `snippet`: Personal VSCode auto complete snippet.
 
-- `task`: my school task.
-
 - `bootanim_trim.py`: generate android bootanimation trim.txt value.
 
 - `bootanim_trim.cpp`: same as above but in c++.
