@@ -6,13 +6,12 @@ love to make my life easier 😜
 
 - `BimayClass`: Scrape Class Schedule and paste to html file.
 
-- `cleanup.sh`: Delete certain file extention from all subfolders.
+- `cleanup`: Delete certain file extention from all subfolders.
 
 - `snippet`: Personal VSCode auto complete snippet.
 
-- `bootanim_trim.py`: generate android bootanimation trim.txt value.
+- `bootanim_trim`: generate android bootanimation trim.txt value.
 
-- `bootanim_trim.cpp`: same as above but in c++.
 
 - `kernel.sh`: Kernel build script.
 
