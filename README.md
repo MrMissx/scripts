@@ -12,7 +12,6 @@ love to make my life easier 😜
 
 - `bootanim_trim`: generate android bootanimation trim.txt value.
 
-
 - `kernel.sh`: Kernel build script.
 
 - `pdf2image.sh`: convert every page on pdf to image file.
