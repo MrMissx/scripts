@@ -7,7 +7,7 @@ function check_dep() {
     sleep 1
 
     if command -v python3 >/dev/null 2>&1 ; then
-       echo -e "\nPython found"
+        echo -e "\nPython found"
     else
         echo -e "\nPython not found. installing..."
         if [ "$(command -v apt-get)" != "" ]; then

@@ -8,7 +8,9 @@ export ZSH="/home/mrmiss/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="fishy"
+# ZSH_THEME="juanghurtado"
+ZSH_THEME="pmcgee"
+#ZSH_THEME="honukai"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -27,10 +29,10 @@ ZSH_THEME="fishy"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
+export UPDATE_ZSH_DAYS=4
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -42,7 +44,7 @@ export UPDATE_ZSH_DAYS=7
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -68,7 +70,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions heroku)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,7 +79,10 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Export GPG_TTY for signing things
+export GPG_TTY=$(tty)
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -95,12 +100,37 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias updateall="sudo apt update -y && sudo apt upgrade -y"
-alias fetchall="git fetch --all"
-alias rebase="git rebase -i @~"
-alias commits="git commit -S -s"
-alias commit="git commit -s"
-alias rbash="exec bash"
-alias install="sudo apt install "
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias commit="git commit --no-gpg-sign"
+alias commits="git commit -S -s"
+alias fetchall="git fetch --all"
+alias rebase="git rebase -i"
+alias rmverif="git commit -s --amend --no-gpg-sign"
+alias gmaster="git checkout master"
+alias verifon="git config --global commit.gpgsign True"
+alias verifoff="git config --global commit.gpgsign False"
+alias updatesubmodule="git submodule foreach git pull origin master"
+alias project="cd /mnt/d/project"
+# alias pip="python3.9 -m pip"
+alias rm-pycache='find . -type d -name  "__pycache__" -exec rm -r {} +'
+alias oop-lec="cd '/mnt/d/OneDrive - Bina Nusantara/dunno/4/Object Oriented Programming/LEC'"
+alias oop-lab="cd '/mnt/d/OneDrive - Bina Nusantara/dunno/4/Object Oriented Programming/LAB'"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/mrmiss/.sdkman"
+[[ -s "/home/mrmiss/.sdkman/bin/sdkman-init.sh" ]] && source "/home/mrmiss/.sdkman/bin/sdkman-init.sh"
+
+
+# Python and Poetry stuff
+export PATH="/home/mrmiss/.local/bin:$PATH"
+
+# xdg stuff
+export BROWSER="powershell.exe /C start"
+
+cd /home/mrmiss
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# Custom function to make me easier to compile java things
+jcar() { javac $1.java && java $1 ; }

@@ -13,7 +13,7 @@ getapi() {
     if ! [[ -e "$(pwd)/rbgapi.ini" ]]; then
 		echo -e "No API found"
 		echo -e "read the script desc please!"
-	    exit 7
+        exit 7
     else
         read -r RM_BG_API_KEY < "$(pwd)/rbgapi.ini"
         echo -e $RM_BG_API_KEY
